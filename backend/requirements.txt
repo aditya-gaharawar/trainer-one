@@ -1,0 +1,14 @@
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+pydantic==2.5.0
+pydantic-settings==2.1.0
+websockets==12.0
+torch>=2.8.0
+transformers==4.56.2
+trl==0.22.2
+datasets
+bitsandbytes
+accelerate
+protobuf
+python-dotenv==1.0.0
