@@ -66,6 +66,8 @@ checkpoints/
 .pytest_cache/
 .coverage
 htmlcov/
+coverage/
+.vitest/
 
 # OS
 Thumbs.db

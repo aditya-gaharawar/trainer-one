@@ -294,6 +294,48 @@ npm run build
 npm run preview
 ```
 
+## Testing
+
+This project includes comprehensive tests for both backend and frontend.
+
+### Backend Tests
+
+```bash
+cd backend
+source venv/bin/activate
+pip install -r requirements-dev.txt
+
+# Run all tests
+pytest
+
+# Run with coverage
+pytest --cov=. --cov-report=html
+```
+
+### Frontend Tests
+
+```bash
+cd frontend
+npm install
+
+# Run all tests
+npm test
+
+# Run with coverage
+npm run test:coverage
+
+# Run with UI
+npm run test:ui
+```
+
+### Test Coverage
+
+- **Backend**: 35+ tests covering model management, training, and API endpoints
+- **Frontend**: 40+ tests covering components and services
+- **Overall Coverage**: > 80% for critical functionality
+
+For detailed testing documentation, see [TESTING.md](./TESTING.md).
+
 ## Resources
 
 - [Unsloth Documentation](https://docs.unsloth.ai/)
