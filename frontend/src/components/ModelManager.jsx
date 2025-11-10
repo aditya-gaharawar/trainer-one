@@ -23,7 +23,7 @@ const ModelManager = ({ onModelStatusChange }) => {
         onModelStatusChange(statusData.loaded);
       }
     } catch (error) {
-      console.error('Error fetching model status:', error);
+      // Error fetching model status
     }
   };
 
@@ -43,7 +43,6 @@ const ModelManager = ({ onModelStatusChange }) => {
         alert(`Error: ${result.error}`);
       }
     } catch (error) {
-      console.error('Error loading model:', error);
       alert(`Error: ${error.message}`);
     } finally {
       setLoading(false);
@@ -62,7 +61,6 @@ const ModelManager = ({ onModelStatusChange }) => {
         alert(`Error: ${result.error}`);
       }
     } catch (error) {
-      console.error('Error unloading model:', error);
       alert(`Error: ${error.message}`);
     } finally {
       setLoading(false);

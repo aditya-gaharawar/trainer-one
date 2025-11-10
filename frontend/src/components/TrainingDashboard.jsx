@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Play,
   Square,
@@ -41,14 +41,14 @@ const TrainingDashboard = () => {
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [currentJob]);
+  }, [currentJob, refreshJobStatus]);
 
   const loadDefaultConfig = async () => {
     try {
       const defaultConfig = await getDefaultConfig();
       setConfig(defaultConfig);
     } catch (error) {
-      console.error('Error loading default config:', error);
+      // Error loading default config
     }
   };
 
@@ -63,11 +63,11 @@ const TrainingDashboard = () => {
         setCurrentJob(running);
       }
     } catch (error) {
-      console.error('Error loading jobs:', error);
+      // Error loading jobs
     }
   };
 
-  const refreshJobStatus = async (jobId) => {
+  const refreshJobStatus = useCallback(async (jobId) => {
     try {
       const job = await getTrainingJob(jobId);
       setCurrentJob(job);
@@ -77,9 +77,9 @@ const TrainingDashboard = () => {
         prev.map((j) => (j.job_id === jobId ? job : j))
       );
     } catch (error) {
-      console.error('Error refreshing job status:', error);
+      // Error refreshing job status
     }
-  };
+  }, []);
 
   const handleCreateAndStartJob = async () => {
     if (!config) return;
@@ -100,7 +100,6 @@ const TrainingDashboard = () => {
       // Reload jobs list
       await loadJobs();
     } catch (error) {
-      console.error('Error creating/starting job:', error);
       alert(`Error: ${error.message}`);
     } finally {
       setLoading(false);
@@ -113,7 +112,6 @@ const TrainingDashboard = () => {
       await refreshJobStatus(jobId);
       await loadJobs();
     } catch (error) {
-      console.error('Error cancelling job:', error);
       alert(`Error: ${error.message}`);
     }
   };

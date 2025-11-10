@@ -55,7 +55,6 @@ const ChatInterface = ({ modelLoaded }) => {
     };
 
     const onError = (error) => {
-      console.error('Streaming error:', error);
       setMessages((prev) => {
         const newMessages = [...prev];
         newMessages[newMessages.length - 1] = {
@@ -108,7 +107,6 @@ const ChatInterface = ({ modelLoaded }) => {
 
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
-      console.error('Generation error:', error);
       const errorMessage = {
         role: 'assistant',
         content: `Error: ${error.message}`,
@@ -279,7 +277,7 @@ const ChatInterface = ({ modelLoaded }) => {
             </div>
           ))
         )}
-        {isGenerating && useStreaming && messages[messages.length - 1]?.role === 'user' && (
+        {isGenerating && useStreaming && messages[messages.length - 1]?.role === 'assistant' && messages[messages.length - 1]?.content === '' && (
           <div className="flex justify-start">
             <div className="bg-gray-100 rounded-lg px-4 py-3">
               <Loader2 className="w-5 h-5 animate-spin text-gray-600" />

@@ -46,7 +46,7 @@ export const createStreamingConnection = (onMessage, onError, onComplete) => {
   const ws = new WebSocket(wsUrl);
 
   ws.onopen = () => {
-    console.log('WebSocket connected');
+    // WebSocket connected
   };
 
   ws.onmessage = (event) => {
@@ -64,12 +64,11 @@ export const createStreamingConnection = (onMessage, onError, onComplete) => {
   };
 
   ws.onerror = (error) => {
-    console.error('WebSocket error:', error);
     onError('WebSocket connection error');
   };
 
   ws.onclose = () => {
-    console.log('WebSocket disconnected');
+    // WebSocket disconnected
   };
 
   return ws;
