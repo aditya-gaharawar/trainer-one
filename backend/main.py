@@ -1,5 +1,6 @@
 """
-FastAPI Backend for GPT-OSS Fine-tuning Interface
+Trainer One - Backend API
+Professional AI Model Fine-tuning Platform
 Provides REST API endpoints for model inference and training management
 """
 
@@ -23,9 +24,16 @@ logger = logging.getLogger(__name__)
 
 # Create FastAPI app
 app = FastAPI(
-    title="GPT-OSS Fine-tuning API",
-    description="Backend API for GPT-OSS model fine-tuning and inference",
-    version="1.0.0"
+    title="Trainer One API",
+    description="Professional AI Model Fine-tuning Platform - Backend API for model inference and training management",
+    version="1.0.0",
+    contact={
+        "name": "Trainer One",
+        "url": "https://github.com/aditya-gaharawar/trainer-one",
+    },
+    license_info={
+        "name": "LGPL-3.0",
+    }
 )
 
 # Configure CORS
@@ -86,9 +94,11 @@ class TrainingConfigRequest(BaseModel):
 async def root():
     """Root endpoint - API health check"""
     return {
-        "name": "GPT-OSS Fine-tuning API",
+        "name": "Trainer One API",
+        "description": "Professional AI Model Fine-tuning Platform",
         "status": "running",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "docs": "/docs"
     }
 
 

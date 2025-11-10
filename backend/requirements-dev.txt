@@ -1,3 +1,7 @@
+# Trainer One - Development Dependencies
+# Professional AI Model Fine-tuning Platform
+# https://github.com/aditya-gaharawar/trainer-one
+
 # Testing dependencies
 pytest==7.4.3
 pytest-asyncio==0.21.1

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Brain, MessageSquare, TrendingUp, Github } from 'lucide-react';
+import { Brain, MessageSquare, TrendingUp, Github, Zap } from 'lucide-react';
 import ChatInterface from './components/ChatInterface';
 import TrainingDashboard from './components/TrainingDashboard';
 import ModelManager from './components/ModelManager';
@@ -20,27 +20,35 @@ function App() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-2 rounded-lg">
-                <Brain className="w-8 h-8 text-white" />
+              {/* Trainer One Logo */}
+              <div className="relative">
+                <div className="bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 p-2.5 rounded-xl shadow-lg">
+                  <Brain className="w-8 h-8 text-white" />
+                </div>
+                <div className="absolute -bottom-1 -right-1 bg-yellow-400 rounded-full p-1">
+                  <Zap className="w-3 h-3 text-gray-900" />
+                </div>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">
-                  GPT-OSS Fine-tuning Platform
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Trainer One
                 </h1>
                 <p className="text-sm text-gray-600">
-                  Train and interact with large language models
+                  Professional AI Model Fine-tuning Platform
                 </p>
               </div>
             </div>
-            <a
-              href="https://github.com/unslothai/unsloth"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
-            >
-              <Github className="w-5 h-5" />
-              <span className="hidden sm:inline">Unsloth</span>
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://github.com/aditya-gaharawar/trainer-one"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg"
+              >
+                <Github className="w-5 h-5" />
+                <span className="hidden sm:inline">View on GitHub</span>
+              </a>
+            </div>
           </div>
         </div>
       </header>
@@ -88,18 +96,25 @@ function App() {
 
         {/* Footer */}
         <footer className="mt-8 text-center text-sm text-gray-600">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <Brain className="w-4 h-4 text-purple-600" />
+            <span className="font-semibold text-gray-800">Trainer One</span>
+          </div>
           <p>
-            Built with{' '}
+            Powered by{' '}
             <a
               href="https://docs.unsloth.ai/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              className="text-blue-600 hover:underline font-medium"
             >
               Unsloth
             </a>
             {' • '}
-            Fast fine-tuning for large language models
+            Professional-grade LLM fine-tuning made simple
+          </p>
+          <p className="mt-1 text-xs text-gray-500">
+            © 2024 Trainer One. All rights reserved.
           </p>
         </footer>
       </main>

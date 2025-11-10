@@ -1,6 +1,6 @@
-# Testing Guide
+# Testing Guide - Trainer One
 
-This document provides comprehensive information about testing the GPT-OSS Fine-tuning Platform.
+This document provides comprehensive information about testing Trainer One, the professional AI model fine-tuning platform.
 
 ## Table of Contents
 

@@ -1,8 +1,11 @@
 {
-  "name": "gpt-oss-frontend",
+  "name": "trainer-one-frontend",
+  "description": "Trainer One - Professional AI Model Fine-tuning Platform Frontend",
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "author": "Trainer One",
+  "license": "LGPL-3.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

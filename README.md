@@ -1,8 +1,31 @@
-# GPT-OSS Fine-tuning Platform
+# Trainer One
 
-A full-stack web application for fine-tuning and interacting with OpenAI's GPT-OSS language models using the Unsloth framework.
+<div align="center">
 
-## Features
+**🚀 Professional AI Model Fine-tuning Platform 🚀**
+
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![React](https://img.shields.io/badge/react-18.2.0-blue.svg)](https://reactjs.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104-green.svg)](https://fastapi.tiangolo.com/)
+
+</div>
+
+---
+
+## 🎯 Overview
+
+**Trainer One** is a full-stack web application designed to make professional-grade LLM fine-tuning accessible and simple. Built on top of the powerful Unsloth framework, it provides an intuitive interface for fine-tuning and interacting with OpenAI's GPT-OSS language models (20B and 120B parameters).
+
+### Why Trainer One?
+
+- 🎨 **Beautiful UI**: Modern, responsive interface built with React and Tailwind CSS
+- ⚡ **Fast Training**: Powered by Unsloth's optimized training pipeline
+- 💾 **Memory Efficient**: 4-bit quantization and LoRA support for consumer GPUs
+- 🔄 **Real-time Updates**: Live training metrics and streaming inference
+- 🛠️ **Production Ready**: Comprehensive testing and documentation
+
+## ✨ Features
 
 ### Backend (FastAPI)
 - **Model Management**: Load/unload GPT-OSS models (20B/120B parameters)
