@@ -29,13 +29,16 @@ app = FastAPI(
 )
 
 # Configure CORS
+# Get allowed origins from environment or use default
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://localhost:3000").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify exact origins
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+logger.info(f"CORS configured with allowed origins: {allowed_origins}")
 
 
 # ============================================================================
@@ -220,13 +223,13 @@ async def inference_stream(websocket: WebSocket):
         logger.error(f"Error in WebSocket: {str(e)}")
         try:
             await websocket.send_json({"type": "error", "error": str(e)})
-        except:
-            pass
+        except Exception as send_error:
+            logger.error(f"Failed to send error message: {str(send_error)}")
     finally:
         try:
             await websocket.close()
-        except:
-            pass
+        except Exception as close_error:
+            logger.debug(f"WebSocket already closed: {str(close_error)}")
 
 
 # ============================================================================

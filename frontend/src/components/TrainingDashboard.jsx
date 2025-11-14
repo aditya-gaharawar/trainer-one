@@ -26,6 +26,44 @@ const TrainingDashboard = () => {
   const [loading, setLoading] = useState(false);
   const [showConfig, setShowConfig] = useState(false);
 
+  const refreshJobStatus = useCallback(async (jobId) => {
+    try {
+      const job = await getTrainingJob(jobId);
+      setCurrentJob(job);
+
+      // Update in jobs list
+      setJobs((prev) =>
+        prev.map((j) => (j.job_id === jobId ? job : j))
+      );
+    } catch (error) {
+      console.error('Error refreshing job status:', error);
+    }
+  }, []);
+
+  const loadDefaultConfig = async () => {
+    try {
+      const defaultConfig = await getDefaultConfig();
+      setConfig(defaultConfig);
+    } catch (error) {
+      console.error('Error loading default config:', error);
+    }
+  };
+
+  const loadJobs = async () => {
+    try {
+      const response = await listTrainingJobs();
+      setJobs(response.jobs || []);
+
+      // Find running job
+      const running = response.jobs?.find((job) => job.status === 'running');
+      if (running) {
+        setCurrentJob(running);
+      }
+    } catch (error) {
+      console.error('Error loading jobs:', error);
+    }
+  };
+
   useEffect(() => {
     loadDefaultConfig();
     loadJobs();
@@ -42,44 +80,6 @@ const TrainingDashboard = () => {
       if (interval) clearInterval(interval);
     };
   }, [currentJob, refreshJobStatus]);
-
-  const loadDefaultConfig = async () => {
-    try {
-      const defaultConfig = await getDefaultConfig();
-      setConfig(defaultConfig);
-    } catch (error) {
-      // Error loading default config
-    }
-  };
-
-  const loadJobs = async () => {
-    try {
-      const response = await listTrainingJobs();
-      setJobs(response.jobs || []);
-
-      // Find running job
-      const running = response.jobs?.find((job) => job.status === 'running');
-      if (running) {
-        setCurrentJob(running);
-      }
-    } catch (error) {
-      // Error loading jobs
-    }
-  };
-
-  const refreshJobStatus = useCallback(async (jobId) => {
-    try {
-      const job = await getTrainingJob(jobId);
-      setCurrentJob(job);
-
-      // Update in jobs list
-      setJobs((prev) =>
-        prev.map((j) => (j.job_id === jobId ? job : j))
-      );
-    } catch (error) {
-      // Error refreshing job status
-    }
-  }, []);
 
   const handleCreateAndStartJob = async () => {
     if (!config) return;

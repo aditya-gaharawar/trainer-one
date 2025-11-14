@@ -6,7 +6,8 @@ Handles model loading, inference, and management
 import os
 import torch
 from typing import Optional, Dict, Any, AsyncIterator
-from threading import Lock
+from threading import Lock, Thread
+from transformers import TextIteratorStreamer
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -154,9 +155,6 @@ class ModelManager:
             ).to(self.model.device)
 
             # Generate with streaming
-            from transformers import TextIteratorStreamer
-            from threading import Thread
-
             streamer = TextIteratorStreamer(
                 self.tokenizer,
                 skip_prompt=True,

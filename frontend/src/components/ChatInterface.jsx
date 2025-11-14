@@ -21,6 +21,16 @@ const ChatInterface = ({ modelLoaded }) => {
     scrollToBottom();
   }, [messages]);
 
+  // Cleanup WebSocket on unmount to prevent memory leak
+  useEffect(() => {
+    return () => {
+      if (wsRef.current) {
+        wsRef.current.close();
+        wsRef.current = null;
+      }
+    };
+  }, []);
+
   const handleSend = async () => {
     if (!input.trim() || !modelLoaded || isGenerating) return;
 
