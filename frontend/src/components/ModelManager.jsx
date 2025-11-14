@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Download, Upload, Database, Cpu, MemoryStick, Loader2 } from 'lucide-react';
 import { loadModel, unloadModel, getModelStatus } from '../services/api';
 
@@ -9,13 +9,7 @@ const ModelManager = ({ onModelStatusChange }) => {
   const [maxSeqLength, setMaxSeqLength] = useState(1024);
   const [loadIn4Bit, setLoadIn4Bit] = useState(true);
 
-  useEffect(() => {
-    refreshStatus();
-    const interval = setInterval(refreshStatus, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const refreshStatus = async () => {
+  const refreshStatus = useCallback(async () => {
     try {
       const statusData = await getModelStatus();
       setStatus(statusData);
@@ -25,7 +19,13 @@ const ModelManager = ({ onModelStatusChange }) => {
     } catch (error) {
       console.error('Error fetching model status:', error);
     }
-  };
+  }, [onModelStatusChange]);
+
+  useEffect(() => {
+    refreshStatus();
+    const interval = setInterval(refreshStatus, 5000);
+    return () => clearInterval(interval);
+  }, [refreshStatus]);
 
   const handleLoadModel = async () => {
     setLoading(true);

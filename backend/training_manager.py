@@ -5,10 +5,9 @@ Handles training job management and configuration
 
 import os
 import logging
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 from datetime import datetime
 from threading import Thread
-import json
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -170,7 +169,7 @@ class TrainingManager:
 
         return self.jobs[job_id].to_dict()
 
-    def list_jobs(self) -> list[Dict[str, Any]]:
+    def list_jobs(self) -> List[Dict[str, Any]]:
         """
         List all training jobs
 
