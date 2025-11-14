@@ -23,7 +23,7 @@ const ModelManager = ({ onModelStatusChange }) => {
         onModelStatusChange(statusData.loaded);
       }
     } catch (error) {
-      // Error fetching model status
+      console.error('Error fetching model status:', error);
     }
   };
 
